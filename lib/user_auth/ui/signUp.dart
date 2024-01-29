@@ -1,3 +1,5 @@
+import 'package:e_com/home.dart';
+import 'package:e_com/user_auth/ui/siginui.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
@@ -9,29 +11,24 @@ class SignUp extends StatefulWidget {
 }
 
 class _SignUpState extends State<SignUp> {
-  TextEditingController email= TextEditingController();
-  TextEditingController password= TextEditingController();
+  TextEditingController email = TextEditingController();
+  TextEditingController password = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Container(
-        color: Colors.orangeAccent,
-        height: MediaQuery.of(context).size.height,
-        width: MediaQuery.of(context).size.width,
-        child: Center(
-          child: Container(
-            height: MediaQuery.of(context).size.height * 0.55,
-            width: MediaQuery.of(context).size.width * 0.8,
-            decoration: BoxDecoration(
-              color: Colors.white,
-              borderRadius: BorderRadius.all(
-                Radius.circular(10.0),
-              ),
-            ),
-            child: Column(
+      backgroundColor: Color.fromARGB(255, 243, 177, 153),
+      body: Padding(
+        padding: const EdgeInsets.only(top: 180.0, left: 45),
+        child: Container(
+          decoration: BoxDecoration(
+              color: Colors.white, borderRadius: BorderRadius.circular(10)),
+          height: MediaQuery.of(context).size.height * 0.6,
+          width: MediaQuery.of(context).size.width * 0.8,
+          child: Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: ListView(
               children: [
-                Padding(
-                  padding: const EdgeInsets.all(8.0),
+                Center(
                   child: Text(
                     "SignUp",
                     style: TextStyle(fontSize: 25),
@@ -51,7 +48,7 @@ class _SignUpState extends State<SignUp> {
                       )),
                 ),
                 Padding(
-                  padding: const EdgeInsets.all(15.0),
+                  padding: const EdgeInsets.all(8.0),
                   child: TextFormField(
                     // validator: (value){
                     //   // if(password.text.isNotEmpty&&password.text.contains(l)){ }
@@ -65,7 +62,7 @@ class _SignUpState extends State<SignUp> {
                       hintText: "Enter your password",
                       labelText: "Password",
                       suffixIcon: GestureDetector(
-                        onTap:(){},
+                        onTap: () {},
                         child: Icon(Icons.visibility),
                       ),
                     ),
@@ -73,20 +70,16 @@ class _SignUpState extends State<SignUp> {
                   ),
                 ),
                 GestureDetector(
-                    onTap:(){},
-                    //     (){
-                    //   if(controller.text.isNotEmpty&& password.text.isNotEmpty){
-                    //     print('succesfully signup');
-                    //   }
-                    //   else{
-                    //     print("shshshhshshs");
-                    //   }
-                    // },
+                    onTap: () {
+                      Navigator.push(context,
+                          MaterialPageRoute(builder: (context) => Home()));
+                    },
+
                     child: Container(
                       height: MediaQuery.of(context).size.height * 0.05,
                       width: MediaQuery.of(context).size.width * 0.72,
                       decoration: BoxDecoration(
-                          color: Colors.orangeAccent,
+                          color: Color.fromARGB(255, 243, 177, 153),
                           borderRadius: BorderRadius.circular(10)),
                       child: Center(
                           child: Text(
@@ -106,14 +99,20 @@ class _SignUpState extends State<SignUp> {
                   ),
                 ),
                 Container(
-                  decoration: BoxDecoration(border: Border.all(color: Colors.black12)),
+                  decoration: BoxDecoration(),
                   height: MediaQuery.of(context).size.height * 0.035,
                   width: MediaQuery.of(context).size.width * 0.3,
                   child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      Icon(FontAwesomeIcons.google),
-                      Icon(FontAwesomeIcons.facebook)
+                      Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Icon(FontAwesomeIcons.google),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Icon(FontAwesomeIcons.facebook),
+                      )
                     ],
                   ),
                 ),
@@ -124,7 +123,6 @@ class _SignUpState extends State<SignUp> {
                   child: Center(
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.center,
-
                         children: [
                           Center(
                               child: Text(
@@ -134,7 +132,9 @@ class _SignUpState extends State<SignUp> {
                                 ),
                               )),
                           GestureDetector(
-                              onTap: () {},
+                              onTap: () {
+                                Navigator.push(context, MaterialPageRoute(builder: (context)=>SignIn()));
+                              },
                               child: Text(
                                 "Login",
                                 style: TextStyle(
@@ -150,7 +150,6 @@ class _SignUpState extends State<SignUp> {
           ),
         ),
       ),
-
     );
   }
 }

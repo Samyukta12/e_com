@@ -1,11 +1,13 @@
 import 'package:e_com/bloc/home_bloc.dart';
 import 'package:e_com/bloc/home_event.dart';
-import 'package:e_com/bloc/home_state.dart';
+import 'package:e_com/navpage/cart.dart';
+import 'package:e_com/navpage/favourites.dart';
+import 'package:e_com/navpage/search.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:salomon_bottom_bar/salomon_bottom_bar.dart';
 
-import 'navpage/Homepage.dart';
+import 'navpage/homepage/Homepage.dart';
 
 class Home extends StatefulWidget {
   const Home({Key? key}) : super(key: key);
@@ -21,47 +23,78 @@ class _HomeState extends State<Home> {
     super.initState();
   }
 
-  List navlist = [HomePage(), HomePage(), HomePage(), HomePage()];
+  List navlist = [HomePage(), Search(), Favourites(), Cart()];
 
   int selectedindex = 0;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-          title: Center(child: Text("Shop here ")),
-          backgroundColor: const Color.fromARGB(255, 241, 157, 127),
-        ),
-        body: navlist[selectedindex],
-        bottomNavigationBar: SalomonBottomBar(
-          currentIndex: 0,
-          onTap: (value) {
-            selectedindex = value;
-          },
-          backgroundColor: const Color.fromARGB(255, 228, 158, 132),
-          items: [
-            SalomonBottomBarItem(
-              icon: Icon(Icons.home),
-              title: Text("Home"),
-              selectedColor: Colors.pink,
-            ),
-            SalomonBottomBarItem(
-              icon: Icon(Icons.search),
-              title: Text("Search"),
-              selectedColor: Colors.pink,
-            ),
-            SalomonBottomBarItem(
-              icon: Icon(Icons.favorite_border),
-              title: Text("Favourite"),
-              selectedColor: Colors.pink,
-            ),
-            SalomonBottomBarItem(
-              icon: Icon(Icons.shopping_cart),
-              title: Text("Cart"),
-              selectedColor: Colors.pink,
+      drawer: Drawer(
 
-            ),
-          ],
-        ));
+        backgroundColor: Color.fromARGB(255, 246, 207, 193),
+        child: Padding(
+          padding: const EdgeInsets.all(15.0),
+          child: ListView(
+            children: [
+              // DrawerHeader(child: ),
+              ListTile(leading: Icon(Icons.person), title: Text("Profile")),
+              ListTile(leading: Icon(Icons.settings), title: Text("Setting")),
+              ListTile(leading: Icon(Icons.logout), title: Text("Logout"))
+            ],
+          ),
+        ),
+      ),
+      appBar: AppBar(
+        leading: Builder(
+          builder: (BuildContext context) {
+            return IconButton(
+              icon: const Icon(Icons.menu),
+              onPressed: () {
+                Scaffold.of(context).openDrawer();
+              },
+              tooltip: MaterialLocalizations.of(context).openAppDrawerTooltip,
+            );
+          },
+        ),
+
+
+        automaticallyImplyLeading: false,
+        title: Center(child: Text("Shop here ")),
+        backgroundColor: const Color.fromARGB(255, 243, 177, 153),
+      ),
+      body: navlist[selectedindex],
+      bottomNavigationBar: SalomonBottomBar(
+        currentIndex: selectedindex,
+        onTap: (value) {
+          selectedindex = value;
+          setState(() {});
+        },
+        backgroundColor: const Color.fromARGB(255, 248, 199, 181),
+        items: [
+          SalomonBottomBarItem(
+            icon: Icon(Icons.home),
+            title: Text("Home"),
+            selectedColor: Colors.pink,
+          ),
+          SalomonBottomBarItem(
+            icon: Icon(Icons.search),
+            title: Text("Search"),
+            selectedColor: Colors.pink,
+          ),
+          SalomonBottomBarItem(
+            icon: Icon(Icons.favorite_border),
+            title: Text("Favourite"),
+            selectedColor: Colors.pink,
+          ),
+          SalomonBottomBarItem(
+            icon: Icon(Icons.shopping_cart),
+            title: Text("Cart"),
+            selectedColor: Colors.pink,
+          ),
+        ],
+      ),
+
+    );
   }
 }

@@ -1,17 +1,13 @@
+import '../model/item_model.dart';
 
- import '../model/item_model.dart';
+abstract class HomeState {}
 
-abstract class HomeState{
+class InitialState extends HomeState {}
 
- }
- class InitialState extends HomeState{}
- class ResponseState extends HomeState{
+class ResponseState extends HomeState {
+  List<Items> newlist = [];
 
-   List<Items> newlist = [];
+  ResponseState(this.newlist);
+}
 
-   ResponseState(this.newlist);
- }
-
- class SearchState extends HomeState{
-
- }
+class loadingstate extends HomeState {}

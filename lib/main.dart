@@ -1,5 +1,5 @@
-import 'package:e_com/home.dart';
-import 'package:e_com/user_login/ui/sign_ui.dart';
+import 'package:e_com/user_auth/ui/signUp.dart';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -25,6 +25,6 @@ class MyApp extends StatefulWidget {
 class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
-    return Home();
+    return SignUp();
   }
 }
