@@ -7,23 +7,12 @@
 //
 // }
 import 'package:e_com/model/item_model.dart';
-import 'package:http/http.dart'as http;
+import 'package:http/http.dart' as http;
 
-
-
-class ApiRequest{
-  List<Items> items=[];
-  getApi(String url) async{
-   await http.get(Uri.parse(url)).then((response) {
-
-
-   items.addAll(itemsFromJson(response.body));
-
-
-     return items;
-
-   });
+class ApiRequest {
+  getApi(String url) async {
+    return await http.get(Uri.parse(url)).then((response) {
+      return response.body;
+    });
   }
-
-
 }

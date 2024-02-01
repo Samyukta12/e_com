@@ -1,9 +1,8 @@
-import 'package:e_com/bloc/home_bloc.dart';
-import 'package:e_com/navpage/homepage/product_desc.dart';
+import 'package:e_com/home/bloc/home_bloc.dart';
+import 'package:e_com/home/bloc/home_state.dart';
+import 'package:e_com/home/navpage/homepage/product_desc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-
-import '../../bloc/home_state.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -13,11 +12,6 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  @override
-  // void initState() {
-  //   super.initState();
-  // }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -51,8 +45,7 @@ class _HomePageState extends State<HomePage> {
                                         context,
                                         MaterialPageRoute(
                                             builder: (context) => Product(
-                                                  id: state.newlist[index].id,
-                                                )),
+                                                id: state.newlist[index].id)),
                                       );
                                     },
                                     child: Container(

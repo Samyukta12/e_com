@@ -1,7 +1,7 @@
 import 'dart:convert';
 
-import 'package:e_com/navpage/homepage/cart/bloc/cart_event.dart';
-import 'package:e_com/navpage/homepage/cart/bloc/cart_state.dart';
+import 'package:e_com/home/navpage/cart/bloc/cart_event.dart';
+import 'package:e_com/home/navpage/cart/bloc/cart_state.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:http/http.dart' as http;
 
@@ -14,7 +14,8 @@ class CartBloc extends Bloc<CartEvent, CartState> {
 
   void cartEvent(CartEvent event, Emitter<CartState> emit) async {
     try {
-      final response = await http.get(Uri.parse("https://fakestoreapi.com/carts"));
+      final response =
+          await http.get(Uri.parse("https://fakestoreapi.com/carts"));
       if (response.statusCode == 200) {
         // List<CartList> cartList = [];
         var data = jsonDecode(response.body.toString());
@@ -24,7 +25,8 @@ class CartBloc extends Bloc<CartEvent, CartState> {
         //   cartList.add(cartItem);
 
         // }
-        List<CartList> cartList = List.from(data).map((e) => CartList.fromJson(e)).toList();
+        List<CartList> cartList =
+            List.from(data).map((e) => CartList.fromJson(e)).toList();
 
         emit(LoadedCartState(cartList));
       } else {

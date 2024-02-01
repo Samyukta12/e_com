@@ -1,13 +1,13 @@
-import 'package:e_com/bloc/home_bloc.dart';
-import 'package:e_com/bloc/home_event.dart';
-import 'package:e_com/navpage/homepage/cart/cart.dart';
-import 'package:e_com/navpage/favourites.dart';
-import 'package:e_com/navpage/search.dart';
+import 'package:e_com/home/bloc/home_event.dart';
+import 'package:e_com/home/navpage/cart/cart.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:salomon_bottom_bar/salomon_bottom_bar.dart';
 
-import 'navpage/homepage/Homepage.dart';
+import '../Homepage.dart';
+import 'bloc/home_bloc.dart';
+import 'navpage/favourites.dart';
+import 'navpage/search.dart';
 
 class Home extends StatefulWidget {
   const Home({Key? key}) : super(key: key);
@@ -31,7 +31,6 @@ class _HomeState extends State<Home> {
   Widget build(BuildContext context) {
     return Scaffold(
       drawer: Drawer(
-
         backgroundColor: Color.fromARGB(255, 246, 207, 193),
         child: Padding(
           padding: const EdgeInsets.all(15.0),
@@ -57,8 +56,6 @@ class _HomeState extends State<Home> {
             );
           },
         ),
-
-
         automaticallyImplyLeading: false,
         title: Center(child: Text("Shop here ")),
         backgroundColor: const Color.fromARGB(255, 243, 177, 153),
@@ -94,7 +91,6 @@ class _HomeState extends State<Home> {
           ),
         ],
       ),
-
     );
   }
 }

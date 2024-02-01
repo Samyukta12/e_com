@@ -40,7 +40,6 @@ dependencies:
   equatable: ^2.0.5
   font_awesome_flutter:
   salomon_bottom_bar:
-  
 
 dev_dependencies:
   flutter_test:
