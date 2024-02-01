@@ -1,9 +1,8 @@
 import 'package:bloc/bloc.dart';
 import 'package:e_com/bloc/home_event.dart';
 import 'package:e_com/bloc/home_state.dart';
-
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:http/http.dart'as http;
+import 'package:http/http.dart' as http;
 
 import '../model/item_model.dart';
 
@@ -16,7 +15,7 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
     await http
         .get(Uri.parse("https://fakestoreapi.com/products"))
         .then((response) {
-      // print(response.statusCode);
+       // print(response.body);
       itemsList.addAll(itemsFromJson(response.body));
       emit(ResponseState(itemsList));
     });
@@ -25,8 +24,9 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
     // String productApi = "https://fakestoreapi.com/products";
     //
     // try {
-    //   String items = await apiRequest.getApi(productApi);
+    //  var items = await apiRequest.getApi(productApi);
     //   print(items);
+    //
     //   // emit(ResponseState(items));
     // } catch (e) {}
   }

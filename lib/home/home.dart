@@ -1,6 +1,6 @@
 import 'package:e_com/bloc/home_bloc.dart';
 import 'package:e_com/bloc/home_event.dart';
-import 'package:e_com/navpage/cart.dart';
+import 'package:e_com/navpage/homepage/cart/cart.dart';
 import 'package:e_com/navpage/favourites.dart';
 import 'package:e_com/navpage/search.dart';
 import 'package:flutter/material.dart';
