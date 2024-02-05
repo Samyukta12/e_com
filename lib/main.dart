@@ -1,13 +1,16 @@
-import 'package:e_com/home/home.dart';
-import 'package:e_com/home/navpage/cart/bloc/cart_bloc.dart';
-import 'package:e_com/home/navpage/homepage/homepage_bloc/h_bloc.dart';
+import 'package:e_com/dashboard/navpage/cart/CartList/bloc/cartadd_bloc.dart';
+import 'package:e_com/dashboard/navpage/cart/blocApi/cart_bloc.dart';
+import 'package:e_com/dashboard/navpage/cart/itemCount/bloc/count_bloc.dart';
+import 'package:e_com/dashboard/navpage/homepage/homepage_bloc/h_bloc.dart';
+import 'package:e_com/user_auth/ui/signUp.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import 'home/bloc/home_bloc.dart';
+import 'dashboard/bloc/home_bloc.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
+  //  await Firebase.initializeApp();
 
   runApp(MultiBlocProvider(
     providers: [
@@ -15,7 +18,9 @@ void main() {
         create: (context) => HomeBloc(),
       ),
       BlocProvider(create: (context) => SingleProductBloc()),
-      BlocProvider(create: (context) => CartBloc())
+      BlocProvider(create: (context) => CartBloc()),
+      BlocProvider(create: (context) => CartAddBloc()),
+      BlocProvider(create: (context) => CounterBloc())
     ],
     child: MaterialApp(
       debugShowCheckedModeBanner: false,
@@ -32,6 +37,6 @@ class MyApp extends StatefulWidget {
 class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
-    return Home();
+    return SignUp();
   }
 }

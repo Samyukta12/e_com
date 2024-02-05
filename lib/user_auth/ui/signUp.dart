@@ -1,4 +1,5 @@
-import 'package:e_com/home/home.dart';
+import 'package:e_com/constant/color_constant.dart';
+import 'package:e_com/dashboard/home.dart';
 import 'package:e_com/user_auth/ui/siginui.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -16,7 +17,7 @@ class _SignUpState extends State<SignUp> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color.fromARGB(255, 243, 177, 153),
+      backgroundColor: ColorConstant.background,
       body: Padding(
         padding: const EdgeInsets.only(top: 180.0, left: 45),
         child: Container(
@@ -28,7 +29,7 @@ class _SignUpState extends State<SignUp> {
             padding: const EdgeInsets.all(8.0),
             child: ListView(
               children: [
-                Center(
+                const Center(
                   child: Text(
                     "SignUp",
                     style: TextStyle(fontSize: 25),
@@ -63,7 +64,7 @@ class _SignUpState extends State<SignUp> {
                       labelText: "Password",
                       suffixIcon: GestureDetector(
                         onTap: () {},
-                        child: Icon(Icons.visibility),
+                        child: const Icon(Icons.visibility),
                       ),
                     ),
                     obscureText: true,
@@ -71,46 +72,50 @@ class _SignUpState extends State<SignUp> {
                 ),
                 GestureDetector(
                     onTap: () {
-                      Navigator.push(context,
-                          MaterialPageRoute(builder: (context) => Home()));
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => const Home()));
                     },
-
                     child: Container(
                       height: MediaQuery.of(context).size.height * 0.05,
                       width: MediaQuery.of(context).size.width * 0.72,
                       decoration: BoxDecoration(
-                          color: Color.fromARGB(255, 243, 177, 153),
+                          color: ColorConstant.redColor,
                           borderRadius: BorderRadius.circular(10)),
-                      child: Center(
+                      child: const Center(
                           child: Text(
-                            "SignUp",
-                            style: TextStyle(
-                                fontSize: 18, fontWeight: FontWeight.w600),
-                          )),
+                        "SignUp",
+                        style: TextStyle(
+                            fontSize: 18, fontWeight: FontWeight.w600),
+                      )),
                     )),
                 Container(
-                  margin: EdgeInsets.only(top: 12, bottom: 12),
-                  child: Center(child: Text("or")),
+                  margin: const EdgeInsets.only(top: 12, bottom: 1),
+                  child: const Center(child: Text("or")),
+                ),
+                Divider(
+                  thickness: 2,
                 ),
                 Center(
                   child: Container(
-                    margin: EdgeInsets.only(top: 12, bottom: 12),
-                    child: Center(child: Text("Login with")),
+                    margin: const EdgeInsets.only(top: 12, bottom: 12),
+                    child: const Center(child: Text("Login with")),
                   ),
                 ),
                 Container(
-                  decoration: BoxDecoration(),
+                  decoration: const BoxDecoration(),
                   height: MediaQuery.of(context).size.height * 0.035,
                   width: MediaQuery.of(context).size.width * 0.3,
-                  child: Row(
+                  child: const Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Padding(
-                        padding: const EdgeInsets.all(8.0),
+                        padding: EdgeInsets.all(8.0),
                         child: Icon(FontAwesomeIcons.google),
                       ),
                       Padding(
-                        padding: const EdgeInsets.all(8.0),
+                        padding: EdgeInsets.all(8.0),
                         child: Icon(FontAwesomeIcons.facebook),
                       )
                     ],
@@ -119,31 +124,34 @@ class _SignUpState extends State<SignUp> {
                 Container(
                   height: MediaQuery.of(context).size.height * 0.07,
                   width: MediaQuery.of(context).size.width * 0.6,
-                  margin: EdgeInsets.only(top: 12, bottom: 12),
+                  margin: const EdgeInsets.only(top: 12, bottom: 12),
                   child: Center(
                       child: Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Center(
-                              child: Text(
-                                "Already a user?/",
-                                style: TextStyle(
-                                  fontSize: 18,
-                                ),
-                              )),
-                          GestureDetector(
-                              onTap: () {
-                                Navigator.push(context, MaterialPageRoute(builder: (context)=>SignIn()));
-                              },
-                              child: Text(
-                                "Login",
-                                style: TextStyle(
-                                    decoration: TextDecoration.underline,
-                                    fontSize: 18,
-                                    fontWeight: FontWeight.w700),
-                              ))
-                        ],
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      const Center(
+                          child: Text(
+                        "Already a user?/",
+                        style: TextStyle(
+                          fontSize: 18,
+                        ),
                       )),
+                      GestureDetector(
+                          onTap: () {
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => SignIn()));
+                          },
+                          child: const Text(
+                            "Login",
+                            style: TextStyle(
+                                decoration: TextDecoration.underline,
+                                fontSize: 18,
+                                fontWeight: FontWeight.w700),
+                          ))
+                    ],
+                  )),
                 )
               ],
             ),

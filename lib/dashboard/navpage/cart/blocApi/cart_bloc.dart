@@ -1,7 +1,7 @@
 import 'dart:convert';
 
-import 'package:e_com/home/navpage/cart/bloc/cart_event.dart';
-import 'package:e_com/home/navpage/cart/bloc/cart_state.dart';
+import 'package:e_com/dashboard/navpage/cart/blocApi/cart_event.dart';
+import 'package:e_com/dashboard/navpage/cart/blocApi/cart_state.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:http/http.dart' as http;
 
@@ -30,11 +30,9 @@ class CartBloc extends Bloc<CartEvent, CartState> {
 
         emit(LoadedCartState(cartList));
       } else {
-        print("Failed to load data");
         emit(ErrorCartState("Failed to load data"));
       }
     } catch (e) {
-      print("e");
       emit(ErrorCartState("Failed to load data"));
     }
   }

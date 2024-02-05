@@ -1,6 +1,5 @@
 import '../../model/item_model.dart';
 
-
 abstract class HomeState {}
 
 class InitialState extends HomeState {}

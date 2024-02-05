@@ -1,10 +1,8 @@
 import 'package:bloc/bloc.dart';
-
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:http/http.dart' as http;
 
 import '../../model/item_model.dart';
-
 import 'home_event.dart';
 import 'home_state.dart';
 
@@ -17,7 +15,7 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
     await http
         .get(Uri.parse("https://fakestoreapi.com/products"))
         .then((response) {
-       // print(response.body);
+      // print(response.body);
       itemsList.addAll(itemsFromJson(response.body));
       emit(ResponseState(itemsList));
     });

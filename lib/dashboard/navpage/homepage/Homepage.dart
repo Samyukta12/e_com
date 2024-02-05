@@ -1,6 +1,9 @@
-import 'package:e_com/home/bloc/home_bloc.dart';
-import 'package:e_com/home/bloc/home_state.dart';
-import 'package:e_com/home/navpage/homepage/product_desc.dart';
+import 'package:e_com/constant/color_constant.dart';
+import 'package:e_com/dashboard/bloc/home_bloc.dart';
+import 'package:e_com/dashboard/bloc/home_state.dart';
+import 'package:e_com/dashboard/navpage/cart/CartList/bloc/cartadd_bloc.dart';
+import 'package:e_com/dashboard/navpage/cart/cart.dart';
+import 'package:e_com/dashboard/navpage/homepage/product_desc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -13,8 +16,18 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   @override
+  void initState() {
+    super.initState();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        backgroundColor: ColorConstant.background,
+        title: Text("Welcome"),
+        automaticallyImplyLeading: false,
+      ),
       body: Center(
         child: BlocConsumer<HomeBloc, HomeState>(
           listener: (context, state) {},
@@ -28,7 +41,7 @@ class _HomePageState extends State<HomePage> {
                       Expanded(
                         child: GridView.builder(
                           gridDelegate:
-                              SliverGridDelegateWithFixedCrossAxisCount(
+                              const SliverGridDelegateWithFixedCrossAxisCount(
                             crossAxisCount: 2,
                             childAspectRatio: 0.7,
                             crossAxisSpacing: 5.0,
@@ -67,53 +80,52 @@ class _HomePageState extends State<HomePage> {
                                     flex: 1, // Adjust the flex value as needed
                                     child: Text(
                                       state.newlist[index].title,
-                                      style: TextStyle(
+                                      style: const TextStyle(
                                         overflow: TextOverflow.ellipsis,
                                       ),
                                       maxLines: 2,
                                     ),
                                   ),
-                                  Text("Rating: " +
-                                      state.newlist[index].rating.rate
-                                          .toString() +
-                                      "(" +
-                                      (state.newlist[index].rating.count
-                                          .toString()) +
-                                      ")"),
+                                  Text(
+                                      "Rating: ${state.newlist[index].rating.rate}(${state.newlist[index].rating.count})"),
                                   Padding(
                                     padding: const EdgeInsets.all(8.0),
                                     child: GestureDetector(
-                                        onTap: () {
-                                          // Navigator.push(context, MaterialPageRoute(builder: (context)=>Cart()));
-                                          print("cart is clicked");
-                                        },
+                                        onTap: () {},
                                         child: Container(
                                           height: 30,
                                           width: 150,
                                           decoration: BoxDecoration(
-                                              color: Color.fromARGB(
-                                                  255, 243, 177, 153),
+                                              color: ColorConstant.redColor,
                                               border: Border.all(),
                                               borderRadius:
                                                   BorderRadius.circular(10)),
-                                          child: Center(
+                                          child: const Center(
                                               child: Text("Add to cart")),
                                         )),
                                   ),
-                                  GestureDetector(
-                                      onTap: () {},
-                                      child: Container(
-                                        height: 30,
-                                        width: 150,
-                                        decoration: BoxDecoration(
-                                            color: Color.fromARGB(
-                                                255, 243, 177, 153),
-                                            border: Border.all(),
-                                            borderRadius:
-                                                BorderRadius.circular(10)),
-                                        child: Center(
-                                            child: Text("Add to wishlist")),
-                                      ))
+                                  Container(
+                                    height: 30,
+                                    width: 150,
+                                    decoration: BoxDecoration(
+                                        color: ColorConstant.redColor,
+                                        border: Border.all(),
+                                        borderRadius:
+                                            BorderRadius.circular(10)),
+                                    child: Center(
+                                        child: IconButton(
+                                      icon: Icon(Icons.abc),
+                                      onPressed: () {
+                                        BlocProvider.of<CartAddBloc>(context)
+                                            .addIntoCart(state.newlist[index]);
+
+                                        Navigator.push(
+                                            context,
+                                            MaterialPageRoute(
+                                                builder: (context) => Cart()));
+                                      },
+                                    )),
+                                  )
                                 ],
                               ),
                             );
